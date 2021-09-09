@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+    <persistence-unit name="Ecommerce-PU">
+    
+    	<!-- Para aplicações que usam o JDNI 
+    	<jta-data-source>projetoDS</jta-data-source> -->
+    
+    	<!-- Especificando arquivo xml com namedQuery de uma entidade -->
+    	<mapping-file>META-INF/consultas/pedido.xml</mapping-file>
+    	<mapping-file>META-INF/consultas/produto.xml</mapping-file>
+    	<mapping-file>META-INF/consultas/categoria.xml</mapping-file>
+    	
+    	<!-- Configuração de cache -->
+    	<shared-cache-mode>ALL</shared-cache-mode> 
+    	
+    	<!-- <exclude-unlisted-classes>false</exclude-unlisted-classes>  -->
+    	
+    	<!-- Validation MODE -->
+    	<validation-mode>CALLBACK</validation-mode>
+    	    
+        <properties>
+        	<!-- Configurações para conexão do banco de dados (MYSQL) -->
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:mysql://localhost/algaworks_ecommerce?createDatabaseIfNotExist=true&amp;useTimezone=true&amp;serverTimezone=UTC" />
+            <property name="javax.persistence.jdbc.user" value="root" />
+            <property name="javax.persistence.jdbc.password" value="" />
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+            
+            <!-- Configurações para conexão do banco de dados (POSTGRESQL) 
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:postgresql://localhost/algaworks_ecommerce" />
+            <property name="javax.persistence.jdbc.user" value="postgres" />
+            <property name="javax.persistence.jdbc.password" value="admin" />
+            <property name="javax.persistence.jdbc.driver" value="com.postgresql.Driver" /> -->
+            
+            <!-- Configurações do pool de conexão (hikaricp) -->
+            <property name="hibernate.connection.provider_class" 
+            	value="org.hibernate.hikaricp.internal.HikariCPConnectionProvider"/>
+            
+            <property name="hibernate.hikari.maximumPoolSize" value="8"/>
+
+			<!-- Configurações do hibernate -->
+            <property name="javax.persistence.schema-generation.database.action" value="none"/>
+            <property name="javax.persistence.sql-load-script-source" value="META-INF/banco-de-dados/dados-iniciais.sql"/>
+
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />  
+            <!-- <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL10Dialect" /> -->
+            
+            <!-- Configurações do multitenant por schema -->
+            <property name="hibernate.multiTenancy" value="NONE"/>
+            <property name="hibernate.tenant_identifier_resolver" 
+            	value="com.algaworks.ecommerce.hibernate.EcmCurrentTenantIdentifierResolver"/>
+            <property name="hibernate.multi_tenant_connection_provider" 
+            	value="com.algaworks.ecommerce.hibernate.EcmMachineMultiTenantConnectionProvider"/>
+
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+            
+           <!-- Gerar schema de banco de dados com scrips SQL --> 
+           <property name="javax.persistence.schema-generation.create-script-source"
+                      value="META-INF/banco-de-dados/script-criacao.sql"/>
+            <property name="javax.persistence.schema-generation.drop-script-source"
+                      value="META-INF/banco-de-dados/script-remocao.sql"/>
+                      
+            <!-- Gerando schema com metadados e scripts -->
+            <property name="javax.persistence.schema-generation.create-source"
+                      value="metadata-then-script"/>
+            <property name="javax.persistence.schema-generation.drop-source"
+                      value="metadata-then-script"/>
+                      
+            <!-- Exporta schema generation -->
+            <property name="javax.persistence.schema-generation.scripts.action"
+                      value="none"/>
+            <property name="javax.persistence.schema-generation.scripts.create-target"
+                      value="C:/tmp/sql/script-criacao-exportado.sql"/>
+            <property name="javax.persistence.schema-generation.scripts.drop-target"
+                      value="C:/tmp/sql/script-remocao-exportado.sql"/>
+                      
+            <!-- Configuração de cache de segundo nível -->
+            <property name="javax.persistence.sharedCache.mode" value="ALL"/>     
+            
+            <!-- Configurações do ehcache -->
+            <property name="hibernate.cache.region.factory_class" 
+            	value="org.hibernate.cache.jcache.internal.JCacheRegionFactory"/>
+            	
+            <property name="hibernate.javax.cache.provider" 
+            	value="org.ehcache.jsr107.EhcacheCachingProvider"/>
+            	
+            <property name="hibernate.javax.cache.uri" value="META-INF/ehcache.xml"/>  
+            
+          	<!--  <property name="eclipselink.logging.level" value="FINE"/>  -->
+                      
+        </properties>
+    </persistence-unit>
+</persistence>

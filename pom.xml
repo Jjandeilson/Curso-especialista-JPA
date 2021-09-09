@@ -1,0 +1,114 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.algaworks</groupId>
+  <artifactId>algaworks-ecommerce</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <dependencies>
+  	<!--  Dependência do hibernate -->
+  	<dependency>
+  		<groupId>org.hibernate</groupId>
+  		<artifactId>hibernate-core</artifactId>
+  		<version>5.4.10.Final</version>
+  	</dependency>  
+  	
+  	<!-- Dependência MYSQL -->
+  	<dependency>
+  		<groupId>mysql</groupId>
+  		<artifactId>mysql-connector-java</artifactId>
+  		<version>8.0.16</version>
+  	</dependency>
+  	
+  	<!-- Dependência junit -->
+  	<dependency>
+  		<groupId>junit</groupId>
+  		<artifactId>junit</artifactId>
+  		<version>4.12</version>
+  		<scope>test</scope>
+  	</dependency>
+  	
+  	<!-- Dependência do lombok -->
+  	<dependency>
+		<groupId>org.projectlombok</groupId>
+		<artifactId>lombok</artifactId>
+		<version>1.18.20</version>
+	</dependency>
+	
+  	<!-- Metamodel JPA -->
+  	<dependency>
+  		<groupId>org.hibernate</groupId>
+  		<artifactId>hibernate-jpamodelgen</artifactId>
+  		<version>5.4.10.Final</version>
+  		<scope>provided</scope>
+  	</dependency>
+  	
+  	<!-- Hibernate validator -->
+  	<dependency>
+  		<groupId>org.hibernate</groupId>
+  		<artifactId>hibernate-validator</artifactId>
+  		<version>6.1.0.Final</version>
+  	</dependency>
+  	
+  	<dependency>
+  		<groupId>org.glassfish</groupId>
+  		<artifactId>javax.el</artifactId>
+  		<version>3.0.0</version>
+  	</dependency>
+  	
+  	<!-- Pool de conexões -->
+  	<dependency>
+  		<groupId>org.hibernate</groupId>
+  		<artifactId>hibernate-hikaricp</artifactId>
+  		<version>5.4.10.Final</version>
+  	</dependency> 
+  	
+  	<!-- Hibernate Testing (Teste unitários) 
+  	<dependency>
+  		<groupId>org.hibernate</groupId>
+  		<artifactId>hibernate-testing</artifactId>
+  		<version>5.4.10.Final</version>
+  		<scope>test</scope>
+  	</dependency> -->
+  	
+  	<!-- Biblioteca de cache de segundo nível -->
+  	<dependency>
+  		<groupId>org.hibernate</groupId>
+  		<artifactId>hibernate-jcache</artifactId>
+  		<version>5.4.10.Final</version>
+  	</dependency>
+  	
+  	<dependency>
+  		<groupId>org.ehcache</groupId>
+  		<artifactId>ehcache</artifactId>
+  		<version>3.8.1</version>
+  	</dependency> 
+  	
+  	<!-- Configurações do banco postgresql -->
+  	<dependency>
+  		<groupId>org.postgresql</groupId>
+  		<artifactId>postgresql</artifactId>
+  		<version>42.2.9</version>
+  	</dependency>
+  	
+  	<!-- EclipseLink 
+  	<dependency>
+  		<groupId>org.eclipse.persistence</groupId>
+  		<artifactId>eclipselink</artifactId>
+  		<version>2.7.5</version>
+  	</dependency> -->
+  </dependencies>
+  
+  <build>
+  	<plugins>
+  		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+  			<artifactId>maven-compiler-plugin</artifactId>
+  			<version>3.5.1</version>
+  			<configuration>
+  				<source>12</source>
+  				<target>12</target>
+  			</configuration>
+  		</plugin>
+  	</plugins>
+  </build>
+</project>
